@@ -5,7 +5,7 @@ import GamesCard from "./gamesCard";
 export const Body = () => {
   return (
     <div>
-      <div className="flex flex-wrap gap-10 p-10">
+      <div className="flex flex-wrap justify-center gap-10 p-10 ">
         {games.map((game) => (
           <Link to={`/gameDetails/${game.id}`} key={game.id}>
             <GamesCard {...game} />

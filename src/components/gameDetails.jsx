@@ -2,7 +2,11 @@ import { useParams } from "react-router-dom";
 import { games } from "../gamesList";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addItemToCart, decrementItem, removeItemFromCart } from "../redux/cartSlice";
+import {
+  addItemToCart,
+  decrementItem,
+  removeItemFromCart,
+} from "../redux/cartSlice";
 import { Navbar } from "./Navbar";
 
 export const GameDetails = () => {
@@ -39,27 +43,32 @@ export const GameDetails = () => {
   return (
     <div>
       <Navbar />
-      <img src={gameDetails.img} />
-      <h2>{gameDetails.name}</h2>
-      <p>{gameDetails.price}</p>
-      <p>{gameDetails.description}</p>
-      {Cart ? (
-        <button
-          onClick={handleRemoveFromCart}
-          className="flex justify-center px-8 py-2 m-3 mt-2 text-xl font-bold bg-red-700 rounded-md w-60"
-        >
-          {" "}
-          Remove From Cart
-        </button>
-      ) : (
-        <button
-          onClick={handleAddToCart}
-          className="flex justify-center px-8 py-2 m-3 text-xl font-bold bg-red-700 rounded-md w-44"
-        >
-          {" "}
-          Add To Cart
-        </button>
-      )}
+      <div className="flex flex-col md:flex-row">
+        <img className="px-10 pt-24 md:max-w-[800px] max-w-96" src={gameDetails.img} />
+
+        <div className="flex flex-col justify-center px-8 pt-4 md:px-4 md:pt-0">
+          <h1 className="text-2xl font-bold">{gameDetails.name}</h1>
+          <p className="font-bold">${gameDetails.price}</p>
+          <p className="md:w-3/4">{gameDetails.description}</p>
+          {Cart ? (
+            <button
+              onClick={handleRemoveFromCart}
+              className="flex justify-center px-8 py-2 m-3 mt-2 text-xl font-bold text-white bg-red-700 rounded-md w-60"
+            >
+              {" "}
+              Remove From Cart
+            </button>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="flex justify-center px-8 py-2 m-3 text-xl font-bold text-white bg-red-700 rounded-md w-44"
+            >
+              {" "}
+              Add To Cart
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

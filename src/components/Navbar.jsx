@@ -13,7 +13,7 @@ export const Navbar = () => {
     <div>
       <div className="flex items-center justify-around w-full text-white bg-black h-14">
         <Link to={"/"}>
-          <h1>Shopping Cart</h1>
+          <h1 className="text-2xl">Shopping Cart</h1>
         </Link>
         <div>
           <Link to={"/cart"}>

@@ -30,11 +30,11 @@ const GamesCard = (props) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-between text-white bg-black h-[350px] w-[500px]">
+      <div className="flex flex-col items-center justify-between text-white bg-black md:h-[350px] max-w-[350px] md:w-[500px]">
         <img className="w-96" src={props.img} alt={props.name} />
         <div className="flex justify-evenly">
           <h3>{props.name}</h3>
-          <h4>{props.price}</h4>
+          <h4 className="pl-4">${props.price}</h4>
           <h4 className="hidden">{props.description}</h4>
         </div>
         {inCart ? (
