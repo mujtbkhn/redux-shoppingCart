@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { games } from "../gamesList";
-import GamesCard from "./gamesCard";
+import GamesCard from "./Card";
+GamesCard
 
 export const Body = () => {
   return (
