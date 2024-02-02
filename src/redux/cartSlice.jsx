@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
   reducers: {
     addItemToCart: (state, action) => {
       const existingItem = state.find((item) => item.id === action.payload.id);
@@ -12,6 +14,7 @@ const cartSlice = createSlice({
       } else {
         state.push({ ...action.payload, count: 1 });
       }
+      localStorage.setItem("cartItems", JSON.stringify(state));
     },
     removeItemFromCart: (state, action) => {
       const indexToRemove = state.findIndex(
@@ -21,6 +24,7 @@ const cartSlice = createSlice({
       if (indexToRemove !== -1) {
         state.splice(indexToRemove, 1);
       }
+      localStorage.setItem("cartItems", JSON.stringify(state));
     },
     incrementItem: (state, action) => {
       const itemToIncrement = state.find(
@@ -29,6 +33,7 @@ const cartSlice = createSlice({
 
       if (itemToIncrement) {
         itemToIncrement.count += 1;
+        localStorage.setItem("cartItems", JSON.stringify(state));
       }
     },
     decrementItem: (state, action) => {
@@ -39,8 +44,9 @@ const cartSlice = createSlice({
       if (itemToDecrement) {
         if (itemToDecrement.count > 1) {
           itemToDecrement.count -= 1;
+          localStorage.setItem("cartItems", JSON.stringify(state));
         } else {
-          return state.filter((item) => item.id !== action.payload.id); // Create a new array reference
+          return state.filter((item) => item.id !== action.payload.id); 
         }
       }
       return state;

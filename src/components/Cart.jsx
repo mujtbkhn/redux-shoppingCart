@@ -6,6 +6,7 @@ export const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart);
 
+
   const handleIncrement = (id) => {
     dispatch(incrementItem({ id }));
   };
@@ -21,7 +22,11 @@ export const Cart = () => {
         {cartItems.map((item) => (
           <div key={item.id} className="m-4">
             <div className="flex flex-col justify-center gap-10 md:flex-row">
-              <img src={item.img} alt={item.name} className="md:max-w-[600px] max-w-92 mt-4"/>
+              <img
+                src={item.img}
+                alt={item.name}
+                className="md:max-w-[600px] max-w-92 mt-4"
+              />
               <div className="flex flex-col justify-center text-2xl">
                 <h1>{item.name}</h1>
                 <h2>${item.price}</h2>
